@@ -4,7 +4,7 @@
 
 import {LightningElement, api, wire} from 'lwc';
 import { CloseActionScreenEvent } from 'lightning/actions';
-import getOpportunityProductsForOpportunity from '@salesforce/apex/OpportunityProductsMethods.getOpportunityProductsForOpportunity';
+import getOpportunityProductsForOpportunity from '@salesforce/apex/OpportunityProductsController.getOpportunityProductsForOpportunity';
 
 export default class CreateOrderFromOpportunity extends LightningElement {
     date;

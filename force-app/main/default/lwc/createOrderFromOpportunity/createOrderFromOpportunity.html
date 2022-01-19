@@ -11,8 +11,7 @@
                          label="Enter start date"
                          required="true"
                          onchange={handleDateChange}></lightning-input>
-        <div>{recordId}</div>
-        <template if:true={isNotRecordUndefined}>
+        <template if:true={recordId}>
             <lightning-checkbox-group name="Checkbox Group"
                                       label="Checkbox Group"
                                       options={availableOpportunityProducts}
