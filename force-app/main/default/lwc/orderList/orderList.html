@@ -1,0 +1,19 @@
+<!--
+ - Created by vpelykh on 18.01.2022.
+ -->
+
+<!-- Order List -->
+<template>
+    <lightning-card title="Orders" icon-name="standard:orders">
+        <div class="everything">
+            <template if:true={areOrdersEmpty}>
+                    <template for:each={orders} for:item="order">
+                            <c-order key={order.Id} order={order} onactivateclick={handleActivateClick}></c-order>
+                    </template>
+            </template>
+        </div>
+        <template if:false={areOrdersEmpty}>
+            <p class="slds-m-around_medium">You have no draft orders with order products</p>
+        </template>
+    </lightning-card>
+</template>

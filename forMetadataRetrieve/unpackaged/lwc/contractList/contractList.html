@@ -1,0 +1,22 @@
+<!--
+ - Created by Админ on 09.01.2022.
+ -->
+
+<!-- Contract List -->
+<template>
+    <lightning-card title="Contracts" icon-name="standard:contract_line_item">
+        <template if:true={areContracts}>
+            <div class="everything">
+            <template for:each={contracts.data} for:item="contract">
+                <div class="slds-m-around_medium" key={contract.Id}>
+                    <c-contract key={contract.Id} record={contract} onactivateclick={handleActivateClick}></c-contract>
+                </div>
+            </template>
+            </div>
+        </template>
+        <template if:false={areContracts}>
+            <p class="slds-m-around_medium slds-text-title">You have no draft contracts</p>
+
+        </template>
+    </lightning-card>
+</template>
