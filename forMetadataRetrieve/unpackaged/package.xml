@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>AIApplication</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>AIApplicationConfig</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CompactLayout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>Car_Shop</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Account.Active__c</members>
+        <members>Account.CustomerPriority__c</members>
+        <members>Account.NumberofLocations__c</members>
+        <members>Account.SLAExpirationDate__c</members>
+        <members>Account.SLASerialNumber__c</members>
+        <members>Account.SLA__c</members>
+        <members>Account.UpsellOpportunity__c</members>
+        <members>Case.EngineeringReqNumber__c</members>
+        <members>Case.PotentialLiability__c</members>
+        <members>Case.Product__c</members>
+        <members>Case.SLAViolation__c</members>
+        <members>CaseComment.CommentBody</members>
+        <members>CaseComment.ParentOrigin</members>
+        <members>Contact.Languages__c</members>
+        <members>Contact.Level__c</members>
+        <members>Contract.Opportunity__c</members>
+        <members>Goal.OrigGoalId__c</members>
+        <members>Lead.CurrentGenerators__c</members>
+        <members>Lead.NumberofLocations__c</members>
+        <members>Lead.Primary__c</members>
+        <members>Lead.ProductInterest__c</members>
+        <members>Lead.SICCode__c</members>
+        <members>Metric.OrigMetricId__c</members>
+        <members>Opportunity.Contact__c</members>
+        <members>Opportunity.CurrentGenerators__c</members>
+        <members>Opportunity.DeliveryInstallationStatus__c</members>
+        <members>Opportunity.MainCompetitors__c</members>
+        <members>Opportunity.OrderNumber__c</members>
+        <members>Opportunity.TrackingNumber__c</members>
+        <members>Product2.Total_Amount__c</members>
+        <members>Test_Drive__c.Contact__c</members>
+        <members>Test_Drive__c.End_Drive__c</members>
+        <members>Test_Drive__c.Opportunity_Product__c</members>
+        <members>Test_Drive__c.Opportunity__c</members>
+        <members>Test_Drive__c.Price__c</members>
+        <members>Test_Drive__c.Start_Drive__c</members>
+        <members>Test_Drive__c.User__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Test_Drive__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Test_Drive__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Car_Shop_UtilityBar</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Assign_manager_to_permission_set</members>
+        <members>Send_Email_When_Price_Becomes_Cheaper</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Account-Account %28Marketing%29 Layout</members>
+        <members>Account-Account %28Sales%29 Layout</members>
+        <members>Account-Account %28Support%29 Layout</members>
+        <members>Account-Account Layout</members>
+        <members>AlternativePaymentMethod-Alternative Payment Method Layout</members>
+        <members>ApiAnomalyEventStore-API Anomaly Event Store Layout</members>
+        <members>Asset-Asset Layout</members>
+        <members>AssetAction-Asset Action Layout</members>
+        <members>AssetActionSource-Asset Action Source Layout</members>
+        <members>AssetRelationship-Asset Relationship Layout</members>
+        <members>AssetStatePeriod-Asset State Period Layout</members>
+        <members>AssociatedLocation-Associated Location Layout</members>
+        <members>AuthorizationForm-Authorization Form Layout</members>
+        <members>AuthorizationFormConsent-Authorization Form Consent Layout</members>
+        <members>AuthorizationFormDataUse-Authorization Form Data Use Layout</members>
+        <members>AuthorizationFormText-Authorization Form Text Layout</members>
+        <members>BusinessBrand-Business Brand Layout</members>
+        <members>CampaignMember-Campaign Member Page Layout</members>
+        <members>CardPaymentMethod-Card Payment Method Layout</members>
+        <members>CaseClose-Close Case Layout</members>
+        <members>CaseMilestone-Case Milestone Layout</members>
+        <members>CommunityMemberLayout-Community Member Layout</members>
+        <members>ConsumptionRate-Consumption Rate Layout</members>
+        <members>ConsumptionSchedule-Consumption Schedule Layout</members>
+        <members>Contact-Contact %28Marketing%29 Layout</members>
+        <members>Contact-Contact %28Sales%29 Layout</members>
+        <members>Contact-Contact %28Support%29 Layout</members>
+        <members>Contact-Contact Layout</members>
+        <members>ContactPointAddress-Contact Point Address Layout</members>
+        <members>ContactPointEmail-Contact Point Email Layout</members>
+        <members>ContactPointPhone-Contact Point Phone Layout</members>
+        <members>ContactPointTypeConsent-Contact Point Type Consent Layout</members>
+        <members>ContentVersion-Content Version Layout</members>
+        <members>Contract-Contract Layout</members>
+        <members>ContractLineItem-Contract Line Item Layout</members>
+        <members>CredentialStuffingEventStore-Credential Stuffing Event Store Layout</members>
+        <members>Customer-Customer Layout</members>
+        <members>DandBCompany-D%26B Company Layout</members>
+        <members>DataUseLegalBasis-Data Use Legal Basis Layout</members>
+        <members>DataUsePurpose-Data Use Purpose Layout</members>
+        <members>DigitalWallet-Digital Wallet Layout</members>
+        <members>DuplicateRecordSet-Duplicate Record Set Layout</members>
+        <members>EmailMessage-Email Message Layout</members>
+        <members>Entitlement-Entitlement Layout</members>
+        <members>EntityMilestone-Object Milestone Layout</members>
+        <members>Event-Event Layout</members>
+        <members>FeedItem-Feed Item Layout</members>
+        <members>FinanceBalanceSnapshot-Finance Balance Snapshot Layout</members>
+        <members>FinanceTransaction-Finance Transaction Layout</members>
+        <members>FlowInterview-Flow Interview Layout</members>
+        <members>Global-Global Layout</members>
+        <members>Idea-Idea Layout</members>
+        <members>Individual-Individual Layout</members>
+        <members>Invoice-Invoice Layout</members>
+        <members>InvoiceLine-Invoice Line Layout</members>
+        <members>Lead-Lead %28Marketing%29 Layout</members>
+        <members>Lead-Lead %28Sales%29 Layout</members>
+        <members>Lead-Lead %28Support%29 Layout</members>
+        <members>Lead-Lead Layout</members>
+        <members>LegalEntity-Legal Entity Layout</members>
+        <members>Location-Location Layout</members>
+        <members>Macro-Macro Layout</members>
+        <members>Opportunity-Opportunity %28Marketing%29 Layout</members>
+        <members>Opportunity-Opportunity %28Sales%29 Layout</members>
+        <members>Opportunity-Opportunity %28Support%29 Layout</members>
+        <members>Opportunity-Opportunity Layout</members>
+        <members>OpportunityLineItem-Opportunity Product Layout</members>
+        <members>Order-Order Layout</members>
+        <members>OrderItem-Order Product Layout</members>
+        <members>Payment-Payment Layout</members>
+        <members>PaymentAuthAdjustment-Payment Authorization Adjustment Layout</members>
+        <members>PaymentAuthorization-Payment Authorization Layout</members>
+        <members>PaymentGateway-Payment Gateway Layout</members>
+        <members>PaymentGatewayLog-Payment Gateway Log Layout</members>
+        <members>PaymentGroup-Payment Group Layout</members>
+        <members>PaymentLineInvoice-Payment Line Invoice Layout</members>
+        <members>Pricebook2-Price Book Layout</members>
+        <members>PricebookEntry-Price Book Entry Layout</members>
+        <members>ProcessException-Process Exception Layout</members>
+        <members>Product2-Product Layout</members>
+        <members>ProductConsumptionSchedule-Product Consumption Schedule Layout</members>
+        <members>QuickText-Quick Text Layout</members>
+        <members>Refund-Refund Layout</members>
+        <members>RefundLinePayment-Refund Line Payment Layout</members>
+        <members>ReportAnomalyEventStore-Report Anomaly Event Store Layout</members>
+        <members>Scorecard-Scorecard Layout</members>
+        <members>ScorecardAssociation-Scorecard Association Layout</members>
+        <members>ScorecardMetric-Scorecard Metric Layout</members>
+        <members>Seller-Seller Layout</members>
+        <members>ServiceContract-Service Contract Layout</members>
+        <members>SessionHijackingEventStore-Session Hijacking Event Store Layout</members>
+        <members>SocialPersona-Social Persona Layout</members>
+        <members>Solution-Solution Layout</members>
+        <members>Task-Task Layout</members>
+        <members>Test_Drive__c-Test Drive Layout</members>
+        <members>ThreatDetectionFeedback-Threat Detection Feedback Layout</members>
+        <members>User-User Layout</members>
+        <members>UserProvAccount-User Provisioning Account Layout</members>
+        <members>UserProvisioningLog-User Provisioning Log Layout</members>
+        <members>UserProvisioningRequest-User Provisioning Request Layout</members>
+        <members>WorkAccess-Access Layout</members>
+        <members>WorkBadge-Badge Received Layout</members>
+        <members>WorkBadgeDefinition-Badge Layout</members>
+        <members>WorkOrder-Work Order Layout</members>
+        <members>WorkOrderLineItem-Work Order Line Item Layout</members>
+        <members>WorkThanks-Thanks Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Consultant</members>
+        <members>Manager</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Case.LogACall</members>
+        <members>Case.NewChildCase</members>
+        <members>CollaborationGroup.NewGroupMember</members>
+        <members>CollaborationGroup.NewGroupRecord</members>
+        <members>Contact.New_Opportunity</members>
+        <members>Contact.New_Test_Drive</members>
+        <members>FeedItem.NewTaskFromFeedItem</members>
+        <members>LogACall</members>
+        <members>NewAccount</members>
+        <members>NewCase</members>
+        <members>NewContact</members>
+        <members>NewEvent</members>
+        <members>NewGroup</members>
+        <members>NewLead</members>
+        <members>NewNote</members>
+        <members>NewOpportunity</members>
+        <members>NewTask</members>
+        <members>Opportunity.Convert_to_order</members>
+        <members>SendEmail</members>
+        <members>Task.Defer</members>
+        <members>Task.Defer_0</members>
+        <members>Task.Defer_1</members>
+        <members>Task.EditDescription</members>
+        <members>Task.EditDescription_0</members>
+        <members>Task.EditDescription_1</members>
+        <members>Task.UpdatePriority</members>
+        <members>Task.UpdatePriority_0</members>
+        <members>Task.UpdatePriority_1</members>
+        <members>Task.UpdateStatus</members>
+        <members>Task.UpdateStatus_0</members>
+        <members>Task.UpdateStatus_1</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
+        <members>Product2.Standard</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>Consultant</members>
+        <members>Manager</members>
+        <name>Role</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>OpportunityLineItem.More_Than_In_Stock</members>
+        <members>Product2.Less_Than_0</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>Account.Billing</members>
+        <members>Campaign.ViewCampaignInfluenceReport</members>
+        <members>Case.UpsellCrosssellOpportunity</members>
+        <members>Opportunity.DeliveryStatus</members>
+        <name>WebLink</name>
+    </types>
+    <version>53.0</version>
+</Package>
