@@ -37,5 +37,9 @@
     "**/{aura,lwc}/**": [
       "eslint"
     ]
+  },
+  "dependencies": {
+    "lightning": "^5.3.3",
+    "lwc": "^2.7.3"
   }
 }

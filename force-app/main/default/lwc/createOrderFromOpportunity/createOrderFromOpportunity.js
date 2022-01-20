@@ -81,16 +81,23 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
 
     saveAction() {
         console.log('In save: ');
-        this.orderId = createOrderWithOrderProducts(this.date, this.value, this.opportunity.Contact__c);
-        console.log('OrderId: ' + this.orderId);
-        this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
-            attributes: {
-                "recordId": this.orderId,
-                "objectApiName": "Order",
-                "actionName": "view"
-            },
-        });
+        console.log(this.date);
+        this.orderId = createOrderWithOrderProducts({startDare: this.date, productIds: this.value, contactId: this.opportunity.Contact__c})
+            .then(() => {
+                console.log('OrderId: ' + this.orderId);
+                this[NavigationMixin.Navigate]({
+                    type: 'standard__recordPage',
+                    attributes: {
+                        "recordId": this.orderId,
+                        "objectApiName": "Order",
+                        "actionName": "view"
+                    },
+                });
+            })
+            .catch((error) =>{
+                console.log(JSON.parse(JSON.stringify(error)));
+            })
+
 
     }
 

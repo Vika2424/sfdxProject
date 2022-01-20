@@ -15,7 +15,9 @@ public with sharing class OpportunityProductsController {
 
     @AuraEnabled
     public static Id createOrderWithOrderProducts(Date startDate, List<Id> productIds, Id contactId) {
+        System.debug(1);
         Order order = OpportunityProductsService.createOrder(startDate, contactId);
-        return order.Id;
+        System.debug(2);
+        return (Id) order.Id;
     }
 }
