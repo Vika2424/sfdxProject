@@ -15,32 +15,31 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     opportunityProducts;
     value = [];
     opportunity;
-    orderId;
 
     _recordId;
 
     get isNotRecordUndefined() {
-        // console.log('RecordId: ' + this.recordId);
         return this.recordId !== undefined;
     }
 
 
     @api set recordId(value) {
         this._recordId = value;
-        // console.log('this._recordId: ' + value);
     }
 
     get recordId() {
-        // console.log('get recordId')
         return this._recordId;
     }
 
     @wire(getOpportunity, {opportunityId: '$recordId'})
     wireGetOpportunity({data, error}) {
         if (data) {
+            console.log('Success with opportunity');
+            console.log(data);
             this.opportunity = data;
             this.error = undefined;
         } else if (error) {
+            console.log('Error: ' + error);
             this.opportunity = undefined;
             this.error = error;
         }
@@ -48,11 +47,7 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
 
     @wire(getOpportunityProductsForOpportunity, {opportunityId: '$recordId'})
     wireGetOpportunityProduct({data, error}) {
-        // console.log('recordId ' + this.recordId);
         if (data) {
-            // console.log('here');
-            // console.log(JSON.stringify(data));
-
             this.opportunityProducts = data;
             this.error = undefined;
         } else if (error) {
@@ -62,8 +57,6 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     }
 
     get availableOpportunityProducts() {
-        // console.log('recordId in availableOpportunityProducts ' + this.recordId);
-        // console.log('currentProducts ' + JSON.stringify(this.opportunityProducts));
         return this.generateCheckboxGroup(this.opportunityProducts);
     }
 
@@ -82,14 +75,19 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
 
     saveAction() {
         console.log('In save: ');
-        console.log(this.date);
-        this.orderId = createOrderWithOrderProducts({startDare: this.date, productIds: this.value, contactId: this.opportunity.Contact__c})
-            .then(() => {
-                console.log('OrderId: ' + this.orderId);
+        console.log('Date: ' + this.date);
+        console.log({ startDare: this.date,
+            productIds: this.value,
+            contactId: this.opportunity.Contact__c});
+        createOrderWithOrderProducts({ startDare: this.date,
+                                                      productIds: this.value,
+                                                      contactId: this.opportunity.Contact__c})
+            .then((result) => {
+                console.log('OrderId: ' + result);
                 this[NavigationMixin.Navigate]({
                     type: 'standard__recordPage',
                     attributes: {
-                        "recordId": this.orderId,
+                        "recordId": result,
                         "objectApiName": "Order",
                         "actionName": "view"
                     },
@@ -104,16 +102,12 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
 
     generateCheckboxGroup(opportunityItems) {
         const options = [];
-        // console.log('opportunityItems');
-        // console.log(opportunityItems);
         if (opportunityItems) {
             for (const opportunityItem of opportunityItems) {
                 if (opportunityItem.Quantity < opportunityItem.Product2.Total_Amount__c) {
                     options.push({label: opportunityItem.Product2.Name, value: opportunityItem.Product2.Id});
                 }
             }
-            console.log('values:');
-            console.log(this.value);
             return options;
         }
     }
