@@ -1,0 +1,58 @@
+/**
+ * Created by Админ on 18.01.2022.
+ */
+
+import {LightningElement, api, wire} from 'lwc';
+import { CloseActionScreenEvent } from 'lightning/actions';
+import getOpportunityProductsForOpportunity from '@salesforce/apex/OpportunityProductsMethods.getOpportunityProductsForOpportunity';
+
+export default class CreateOrderFromOpportunity extends LightningElement {
+    @api recordId;
+    date;
+    error;
+    opportunityProducts;
+    value = [];
+
+    @wire(getOpportunityProductsForOpportunity, {opportunityId: '$recordId'})
+    wireGetOpportunity({data, error}) {
+        if (data) {
+            this.opportunityProducts = data;
+            this.error = undefined;
+        } else if (error) {
+            this.opportunityProducts = undefined;
+            this.error = error;
+        }
+    }
+
+    get availableOpportunityProducts() {
+        console.log(this.opportunityProducts);
+        return this.generateCheckboxGroupForOpportunityProducts(this.opportunityProducts);
+    }
+
+    handleChange(e) {
+        this.value = e.detail.value;
+    }
+
+    closeAction(){
+        this.dispatchEvent(new CloseActionScreenEvent());
+    }
+
+    handleDateChange(event) {
+        this.date = event.target.value;
+    }
+
+    saveAction() {
+        return null;
+    }
+    generateCheckboxGroupForOpportunityProducts(opportunityItems) {
+        const options = [];
+        for (const opportunityItem of opportunityItems) {
+            console.log(opportunityItem);
+            if (opportunityItem.Quantity > opportunityItem['Product2.Total_Amount__c']) {
+                options.push({label : opportunityItem[Product2.Name], value : opportunityItem.Id});
+            }
+        }
+        return options;
+    }
+
+}

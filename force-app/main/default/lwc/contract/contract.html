@@ -1,0 +1,15 @@
+<!--
+ - Created by Админ on 09.01.2022.
+ -->
+
+<!-- Contract -->
+<template>
+    <div class="slds-m-around_medium">
+            <lightning-button variant="base" label={record.ContractNumber} onclick={viewRecord} value={record.Id}></lightning-button><br>
+        <b>StartDate: </b><lightning-formatted-date-time value={record.StartDate} year="2-digit" month="2-digit" day="2-digit" hour="2-digit" minute="2-digit"></lightning-formatted-date-time><br>
+        <b>Status: </b>{record.Status}<br>
+    </div>
+    <div class="slds-m-left_medium">
+        <lightning-button label="Activate" onclick={actClick}></lightning-button>
+    </div>
+</template>
