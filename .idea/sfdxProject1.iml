@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="IlluminatedCloud" name="Illuminated Cloud">
       <configuration>
-        <option name="connectionName" value="myScratchOrg" />
+        <option name="connectionName" value="myAnotherScratch" />
         <option name="connectionType" value="SFDX" />
       </configuration>
     </facet>
@@ -16,7 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="IlluminatedCloud (sfdxProject1/myScratchOrg)" jdkType="IlluminatedCloud" />
+    <orderEntry type="jdk" jdkName="IlluminatedCloud (sfdxProject1/myAnotherScratch)" jdkType="IlluminatedCloud" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
