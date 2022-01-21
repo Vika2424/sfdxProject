@@ -13,12 +13,14 @@
                          onchange={handleDateChange}></lightning-input>
         <template if:true={recordId}>
             <lightning-checkbox-group name="Checkbox Group"
-                                      label="Checkbox Group"
+                                      label="Chose products for this order"
                                       options={availableOpportunityProducts}
                                       value={value}
                                       onchange={handleChange}
             ></lightning-checkbox-group>
         </template>
+        <div class="slds-text-body_small slds-m-top_medium">If you don't see some opportunity products here,
+                                             the amount of your product is more than there is in stock</div>
         <div slot="footer">
             <lightning-button variant="neutral" label="Cancel" onclick={closeAction}></lightning-button>
             <lightning-button variant="brand" label="Save" onclick={saveAction}></lightning-button>

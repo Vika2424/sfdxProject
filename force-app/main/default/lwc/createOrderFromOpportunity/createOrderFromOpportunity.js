@@ -34,8 +34,6 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     @wire(getOpportunity, {opportunityId: '$recordId'})
     wireGetOpportunity({data, error}) {
         if (data) {
-            console.log('Success with opportunity');
-            console.log(data);
             this.opportunity = data;
             this.error = undefined;
         } else if (error) {
@@ -74,16 +72,19 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     }
 
     saveAction() {
-        console.log('In save: ');
-        console.log('Date: ' + this.date);
-        console.log({ startDare: this.date,
-            productIds: this.value,
-            contactId: this.opportunity.Contact__c});
-        createOrderWithOrderProducts({ startDare: this.date,
-                                                      productIds: this.value,
-                                                      contactId: this.opportunity.Contact__c})
+        // console.log('this.value: ');
+        // console.log(this.value);
+        // console.log('Pricebook2Id');
+        // console.log(this.opportunity.Pricebook2Id);
+        // console.log({ startDate: this.date,
+        //     oppProductIds: this.value,
+        //     contactId: this.opportunity.Contact__c,
+        //     pricebookId: this.opportunity.Pricebook2Id});
+        createOrderWithOrderProducts({ startDate: this.date,
+                                                      oppProductIds: this.value,
+                                                      contactId: this.opportunity.Contact__c,
+                                                      pricebookId: this.opportunity.Pricebook2Id})
             .then((result) => {
-                console.log('OrderId: ' + result);
                 this[NavigationMixin.Navigate]({
                     type: 'standard__recordPage',
                     attributes: {
@@ -104,11 +105,12 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
         const options = [];
         if (opportunityItems) {
             for (const opportunityItem of opportunityItems) {
-                if (opportunityItem.Quantity < opportunityItem.Product2.Total_Amount__c) {
-                    options.push({label: opportunityItem.Product2.Name, value: opportunityItem.Product2.Id});
+                if (opportunityItem.Quantity <= opportunityItem.Product2.Total_Amount__c) {
+                    options.push({label: opportunityItem.Product2.Name, value: opportunityItem.Id});
                 }
             }
             return options;
         }
     }
+
 }

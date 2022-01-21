@@ -24,9 +24,22 @@ public with sharing class OpportunityProductsSelector {
     }
 
     public static Opportunity getOpportunityContact(Id opportunityId) {
-        return [SELECT Id, Contact__c
+        return [SELECT Id, Contact__c, Pricebook2Id
                 FROM Opportunity
                 WHERE Id = :opportunityId
+        ];
+    }
+
+    public static List<OpportunityLineItem> selectOppProducts(List<Id> oppProductsIds) {
+        return [
+                SELECT Id,
+                        Product2.Name,
+                        Product2Id,
+                        PricebookEntryId,
+                        Quantity,
+                        UnitPrice
+                FROM OpportunityLineItem
+                WHERE Id IN :oppProductsIds
         ];
     }
 }

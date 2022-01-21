@@ -306,6 +306,10 @@
         <object>Test_Drive__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <applicationVisibilities>
+        <application>Car_Shop</application>
+        <visible>true</visible>
+    </applicationVisibilities>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>false</enabled>
