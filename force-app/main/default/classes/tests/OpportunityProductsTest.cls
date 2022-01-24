@@ -89,7 +89,7 @@ private class OpportunityProductsTest {
     }
 
     @IsTest
-    static void createOrderWithoutProductsTogether() {
+    static void createOrderWithProductsTogether() {
         Opportunity opportunity = [SELECT Id,
                                     Contact__c,
                                     Pricebook2Id,
@@ -129,5 +129,33 @@ private class OpportunityProductsTest {
             }
         }
         System.assert(productsAreCorrect);
+    }
+
+    @IsTest
+    static void createOrderWithoutProductsTogether() {
+        Id contactId = [SELECT Id
+                        FROM Contact
+                        LIMIT 1
+        ].Id;
+        Opportunity opportunity = TestDataFactory.insertOpportunity('Test 2', 'Prospecting', Date.today().addDays(3), contactId);
+
+        Test.startTest();
+        OpportunityProductsController.createOrderWithOrderProducts(String.valueOf(Date.today().addDays(15)), null, opportunity);
+        Test.stopTest();
+
+        Order order = [SELECT Id,
+                CustomerAuthorizedById,
+                Pricebook2Id,
+                EffectiveDate,
+                OpportunityId,
+        (SELECT Id, Quantity, Product2Id FROM OrderItems)
+        FROM Order
+        ];
+        System.assertEquals(Date.today().addDays(15), order.EffectiveDate);
+        System.assertEquals(opportunity.Contact__c, order.CustomerAuthorizedById);
+        System.assertEquals(opportunity.Pricebook2Id, order.Pricebook2Id);
+        System.assertEquals(opportunity.Id, order.OpportunityId);
+        System.assertEquals(0, order.OrderItems.size());
+
     }
 }

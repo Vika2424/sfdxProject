@@ -30,7 +30,7 @@ public class TestDataFactory {
     public static List<OrderItem> insertOrderItems(List<PricebookEntry> pricebookEntries, Order order, Integer quantity) {
         List<OrderItem> orderItems = new List<OrderItem>();
         for (PricebookEntry pricebookEntry : pricebookEntries) {
-            orderItems.add(new OrderItem(UnitPrice = 200, PricebookEntryId = pricebookEntry.Id, OrderId = order.Id, Quantity = quantity));
+            orderItems.add(new OrderItem(UnitPrice = 200, PricebookEntryId = pricebookEntry.Id, OrderId = order.Id, Quantity = quantity, Product2Id = pricebookEntry.Product2Id));
         }
         insert orderItems;
         return orderItems;
@@ -116,5 +116,17 @@ public class TestDataFactory {
         }
         insert opportunityLineItems;
         return opportunityLineItems;
+    }
+
+    public static List<Order> generateOrders(Integer num, Date startDate, Id accountId, String status, Id contactId) {
+        List<Order> orders = new List<Order>();
+        for (Integer i = 0; i < num; i++) {
+            orders.add(new Order(EffectiveDate = startDate,
+                    AccountId = accountId,
+                    Status = status,
+                    CustomerAuthorizedById = contactId
+            ));
+        }
+        return orders;
     }
 }
