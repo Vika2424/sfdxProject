@@ -9,34 +9,13 @@ private class OrderItemTriggerTest {
 
     @TestSetup
     static void setup() {
-        Account account = new Account(Name = 'Test Account');
-        insert account;
-
-        Pricebook2 pricebook = new Pricebook2(Name = 'Test Pricebook', IsActive = true);
-        insert pricebook;
-
+        Account account = TestDataFactory.insertAccount('Test Account');
+        Pricebook2 pricebook = TestDataFactory.insertPricebook('Test Pricebook', true);
 
         Order order = new Order(AccountId=account.Id, EffectiveDate = Date.today().addDays(5), Status='Draft', Pricebook2Id = pricebook.Id);
         insert order;
 
-        List<Product2> products = new List<Product2>();
-        for (Integer i = 0; i < 10; i++) {
-            products.add(new Product2(Name = 'Test Product ' + i, Total_Amount__c = 30));
-        }
-        insert products;
-
-        Id standardPricebook = Test.getStandardPricebookId();
-        List<PricebookEntry> standardPricebookEntries = new List<PricebookEntry>();
-        for (Product2 product : products) {
-            standardPricebookEntries.add(new PricebookEntry(UnitPrice = 200, Pricebook2Id = standardPricebook, Product2Id = product.Id));
-        }
-        insert standardPricebookEntries;
-
-        List<PricebookEntry> pricebookEntries = new List<PricebookEntry>();
-        for (Product2 product : products) {
-            pricebookEntries.add(new PricebookEntry(UnitPrice = 200, Pricebook2Id = pricebook.Id, Product2Id = product.Id));
-        }
-        insert pricebookEntries;
+        TestDataFactory.insertProductsAndPriceEntry(10, 200, 30, pricebook.Id);
     }
     @IsTest
     static void testInsertManyOrderItemsForDifferentProducts() {

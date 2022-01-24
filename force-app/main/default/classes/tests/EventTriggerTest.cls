@@ -156,7 +156,7 @@ private class EventTriggerTest {
 
     @IsTest
     static void testInsertForDifferentUsers() {
-        List<User> users = [SELECT Id FROM User WHERE CreatedDate = TODAY];
+        List<User> users = [SELECT Id FROM User WHERE LastName = 'Testing'];
         List<Event> events = TestDataFactory.getEventsForDifferentUsers(users, Datetime.now(), 60);
 
         Test.startTest();
@@ -170,7 +170,7 @@ private class EventTriggerTest {
 
     @IsTest
     static void testInsertFor3DifferentUsers() {
-        List<User> users = [SELECT Id FROM User WHERE CreatedDate = TODAY LIMIT 3];
+        List<User> users = [SELECT Id FROM User WHERE LastName = 'Testing' LIMIT 3];
         List<Event> events = TestDataFactory.getEventsForDifferentUsers(users, Datetime.now(), 60);
 
         Test.startTest();
@@ -184,7 +184,7 @@ private class EventTriggerTest {
 
     @IsTest
     static void testInsertForDifferentUsersWithCollision() {
-        List<User> users = [SELECT Id FROM User WHERE CreatedDate = TODAY];
+        List<User> users = [SELECT Id FROM User WHERE LastName = 'Testing'];
         List<Event> events = TestDataFactory.getEventsForDifferentUsers(users, Datetime.now(), 60);
         List<Event> anotherEvents = TestDataFactory.getEventsForDifferentUsers(users, Datetime.now().addMinutes(20), 60);
 

@@ -5,23 +5,16 @@
 import {LightningElement, api, wire} from 'lwc';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import {NavigationMixin} from "lightning/navigation";
-import getOpportunityProductsForOpportunity from '@salesforce/apex/OpportunityProductsController.getOpportunityProductsForOpportunity';
 import createOrderWithOrderProducts from '@salesforce/apex/OpportunityProductsController.createOrderWithOrderProducts';
 import getOpportunity from '@salesforce/apex/OpportunityProductsController.getOpportunity';
 
 export default class CreateOrderFromOpportunity extends NavigationMixin(LightningElement) {
     date;
     error;
-    opportunityProducts;
     value = [];
     opportunity;
 
     _recordId;
-
-    get isNotRecordUndefined() {
-        return this.recordId !== undefined;
-    }
-
 
     @api set recordId(value) {
         this._recordId = value;
@@ -43,19 +36,8 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
         }
     }
 
-    @wire(getOpportunityProductsForOpportunity, {opportunityId: '$recordId'})
-    wireGetOpportunityProduct({data, error}) {
-        if (data) {
-            this.opportunityProducts = data;
-            this.error = undefined;
-        } else if (error) {
-            this.opportunityProducts = undefined;
-            this.error = error;
-        }
-    }
-
     get availableOpportunityProducts() {
-        return this.generateCheckboxGroup(this.opportunityProducts);
+        return this.generateCheckboxGroup(this.opportunity.OpportunityLineItems);
     }
 
     handleChange(e) {
@@ -72,18 +54,10 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     }
 
     saveAction() {
-        // console.log('this.value: ');
-        // console.log(this.value);
-        // console.log('Pricebook2Id');
-        // console.log(this.opportunity.Pricebook2Id);
-        // console.log({ startDate: this.date,
-        //     oppProductIds: this.value,
-        //     contactId: this.opportunity.Contact__c,
-        //     pricebookId: this.opportunity.Pricebook2Id});
         createOrderWithOrderProducts({ startDate: this.date,
-                                                      oppProductIds: this.value,
-                                                      contactId: this.opportunity.Contact__c,
-                                                      pricebookId: this.opportunity.Pricebook2Id})
+                                      oppProductIds: this.value,
+                                      opportunityId: this.opportunity
+            })
             .then((result) => {
                 this[NavigationMixin.Navigate]({
                     type: 'standard__recordPage',
