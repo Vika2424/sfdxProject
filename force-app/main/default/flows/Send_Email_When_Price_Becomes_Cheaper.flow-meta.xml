@@ -11,7 +11,7 @@
         <inputParameters>
             <name>emailBody</name>
             <value>
-                <stringValue>The price of {!$Record.Product2.Name} have changed! Now it costs {!$Record.UnitPrice}</stringValue>
+                <stringValue>The price of {!$Record.Product2.Name} has changed! Now it costs {!$Record.UnitPrice}</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -23,7 +23,7 @@
         <inputParameters>
             <name>emailSubject</name>
             <value>
-                <stringValue>The price of a car you have test-driven have changed</stringValue>
+                <stringValue>The price of a car you test-drove has changed</stringValue>
             </value>
         </inputParameters>
     </actionCalls>
