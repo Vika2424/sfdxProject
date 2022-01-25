@@ -115,7 +115,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testPositiveUpdateManyOrderItemsForDifferentProducts() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 3);
         List<Product2> products = [SELECT Id, Total_Amount__c FROM Product2];
 
@@ -136,7 +136,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testNegativeUpdateManyOrderItemsForDifferentProducts() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 3);
         List<Product2> products = [SELECT Id, Total_Amount__c FROM Product2];
 
@@ -157,7 +157,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testUpdateManyOrderItemsForDifferentProductsWithError() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 3);
         List<Product2> products = [SELECT Id, Total_Amount__c FROM Product2];
 
@@ -179,7 +179,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testUpdateManyOrderItemsForDifferentProductsWithError1() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 29);
         List<Product2> products = [SELECT Id, Total_Amount__c FROM Product2];
 
@@ -201,7 +201,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testUpdateManyOrderItemsForDifferentProductsWithError0() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 30);
         List<Product2> products = [SELECT Id, Total_Amount__c FROM Product2];
 
@@ -223,7 +223,7 @@ private class OrderItemTriggerTest {
     @IsTest
     static void testDeleteOrderItems() {
         Order order = [SELECT Id FROM Order LIMIT 1];
-        List<PricebookEntry> pricebookEntries = [SELECT Id FROM PricebookEntry WHERE Pricebook2.Name = 'Test Pricebook'];
+        List<PricebookEntry> pricebookEntries = TestDataFactory.getPricebookEntryByPricebook('Test Pricebook');
         List<OrderItem> orderItems = TestDataFactory.insertOrderItems(pricebookEntries, order, 5);
 
         Test.startTest();

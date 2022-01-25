@@ -118,15 +118,21 @@ public class TestDataFactory {
         return opportunityLineItems;
     }
 
-    public static List<Order> generateOrders(Integer num, Date startDate, Id accountId, String status, Id contactId) {
+    public static List<Order> insertOrders(Integer num, Date startDate, Id accountId, String status, Id contactId, Id pricebookId) {
         List<Order> orders = new List<Order>();
         for (Integer i = 0; i < num; i++) {
             orders.add(new Order(EffectiveDate = startDate,
                     AccountId = accountId,
                     Status = status,
-                    CustomerAuthorizedById = contactId
+                    CustomerAuthorizedById = contactId,
+                    Pricebook2Id = pricebookId
             ));
         }
+        insert orders;
         return orders;
+    }
+
+    public static List<PricebookEntry> getPricebookEntryByPricebook(String name) {
+        return [SELECT Id, Product2Id FROM PricebookEntry WHERE Pricebook2.Name = :name];
     }
 }
