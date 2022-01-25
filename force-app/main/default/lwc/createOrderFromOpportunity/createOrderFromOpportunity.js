@@ -56,7 +56,7 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     saveAction() {
         createOrderWithOrderProducts({ startDate: this.date,
                                       oppProductIds: this.value,
-                                      opportunityId: this.opportunity
+                                      opportunity: this.opportunity
             })
             .then((result) => {
                 this[NavigationMixin.Navigate]({
