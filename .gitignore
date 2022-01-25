@@ -44,4 +44,6 @@ $RECYCLE.BIN/
 /out/
 target/
 
-.idea
+.idea/
+.eslintignore
+jest.config.js
