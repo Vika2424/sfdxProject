@@ -12,21 +12,25 @@ public with sharing class OpportunityProductsSelector {
         ].Id;
     }
 
-    public static List<OpportunityLineItem> selectOpportunityProductsForOpportunity(Id opportunityId) {
-        return [
-                SELECT Id,
-                        Product2.Name,
-                        Product2.Total_Amount__c,
-                        Quantity
-                FROM OpportunityLineItem
-                WHERE OpportunityId = :opportunityId
+    public static Opportunity getOpportunityInformation(Id opportunityId) {
+        return [SELECT Id, Contact__c, Pricebook2Id,
+                (SELECT Id, Product2.Name, Product2.Total_Amount__c, Quantity
+                FROM OpportunityLineItems)
+                FROM Opportunity
+                WHERE Id = :opportunityId
         ];
     }
 
-    public static Opportunity getOpportunityContact(Id opportunityId) {
-        return [SELECT Id, Contact__c
-                FROM Opportunity
-                WHERE Id = :opportunityId
+    public static List<OpportunityLineItem> selectOppProducts(List<Id> oppProductsIds) {
+        return [
+                SELECT Id,
+                        Product2.Name,
+                        Product2Id,
+                        PricebookEntryId,
+                        Quantity,
+                        UnitPrice
+                FROM OpportunityLineItem
+                WHERE Id IN :oppProductsIds
         ];
     }
 }

@@ -4,21 +4,16 @@
 public with sharing class OpportunityProductsController {
 
     @AuraEnabled(Cacheable=true)
-    public static List<OpportunityLineItem> getOpportunityProductsForOpportunity(Id opportunityId) {
-        return OpportunityProductsSelector.selectOpportunityProductsForOpportunity(opportunityId);
-    }
-
-    @AuraEnabled(Cacheable=true)
     public static Opportunity getOpportunity(Id opportunityId) {
-        return OpportunityProductsSelector.getOpportunityContact(opportunityId);
+        return OpportunityProductsSelector.getOpportunityInformation(opportunityId);
     }
 
     @AuraEnabled
-    public static Id createOrderWithOrderProducts(Date startDate, List<Id> productIds, Id contactId) {
-        System.debug(contactId);
-        System.debug(startDate);
-        System.debug(1);
-        Order order = OpportunityProductsService.createOrder(startDate, contactId);
+    public static Id createOrderWithOrderProducts(String startDate, List<Id> oppProductIds, Opportunity opportunity) {
+        Order order = OpportunityProductsService.createOrder(Date.valueOf(startDate), opportunity.Contact__c, opportunity.Pricebook2Id, opportunity.Id);
+        if (oppProductIds != null && oppProductIds.size() > 0) {
+            OpportunityProductsService.createOrderProducts(order.Id, oppProductIds);
+        }
         return order.Id;
     }
 }

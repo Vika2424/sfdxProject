@@ -297,6 +297,10 @@
         <field>Test_Drive__c.User__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <applicationVisibilities>
+        <application>Car_Shop</application>
+        <visible>true</visible>
+    </applicationVisibilities>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>false</enabled>
