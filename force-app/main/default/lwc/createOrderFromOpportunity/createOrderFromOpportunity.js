@@ -30,7 +30,6 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
             this.opportunity = data;
             this.error = undefined;
         } else if (error) {
-            console.log('Error: ' + error);
             this.opportunity = undefined;
             this.error = error;
         }
