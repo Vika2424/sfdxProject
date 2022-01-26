@@ -14,8 +14,6 @@ public with sharing class OpportunityProductsService {
                 Pricebook2Id = pricebookId,
                 OpportunityId = opportunityId
         );
-        System.debug('order:');
-        System.debug(order);
         insert order;
         return order;
     }
