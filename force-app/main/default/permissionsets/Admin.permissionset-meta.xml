@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Admin</label>
+    <license>Salesforce</license>
     <applicationVisibilities>
         <application>Car_Shop</application>
         <visible>true</visible>
@@ -43,8 +46,6 @@
         <field>Test_Drive__c.User__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>Access to custom fields</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>true</allowDelete>
@@ -56,6 +57,10 @@
     </objectPermissions>
     <tabSettings>
         <tab>Test_Drive__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>standard-Pricebook2</tab>
         <visibility>Visible</visibility>
     </tabSettings>
 </PermissionSet>
