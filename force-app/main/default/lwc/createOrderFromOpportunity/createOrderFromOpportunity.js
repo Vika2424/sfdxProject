@@ -5,6 +5,7 @@
 import {LightningElement, api, wire} from 'lwc';
 import { CloseActionScreenEvent } from 'lightning/actions';
 import {NavigationMixin} from "lightning/navigation";
+import {ShowToastEvent} from "lightning/platformShowToastEvent";
 import createOrderWithOrderProducts from '@salesforce/apex/OpportunityProductsController.createOrderWithOrderProducts';
 import getOpportunity from '@salesforce/apex/OpportunityProductsController.getOpportunity';
 
@@ -68,7 +69,13 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
                 });
             })
             .catch((error) =>{
-                console.log(JSON.parse(JSON.stringify(error)));
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error creating record',
+                        message: error.body.message,
+                        variant: 'error'
+                    })
+                );
             })
 
 

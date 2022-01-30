@@ -6,21 +6,23 @@
 <template>
     <lightning-quick-action-panel title="Convert to order">
         Convert to order<br>
-        <lightning-input type="date"
-                         name="inputDate"
-                         label="Enter start date"
-                         required="true"
-                         onchange={handleDateChange}></lightning-input>
         <template if:true={recordId}>
-            <lightning-checkbox-group name="Checkbox Group"
-                                      label="Chose products for this order"
-                                      options={availableOpportunityProducts}
-                                      value={value}
-                                      onchange={handleChange}
-            ></lightning-checkbox-group>
+            <lightning-input type="date"
+                             name="inputDate"
+                             label="Enter start date"
+                              required="true"
+                             onchange={handleDateChange}></lightning-input>
+
+                <lightning-checkbox-group name="Checkbox Group"
+                                          label="Chose products for this order"
+                                          options={availableOpportunityProducts}
+                                          value={value}
+                                          onchange={handleChange}
+                ></lightning-checkbox-group>
+
+            <div class="slds-text-body_small slds-m-top_medium">If you don't see some opportunity products here,
+                                                 the amount of your product is more than there is in stock</div>
         </template>
-        <div class="slds-text-body_small slds-m-top_medium">If you don't see some opportunity products here,
-                                             the amount of your product is more than there is in stock</div>
         <div slot="footer">
             <lightning-button variant="neutral" label="Cancel" onclick={closeAction}></lightning-button>
             <lightning-button variant="brand" label="Save" onclick={saveAction}></lightning-button>
