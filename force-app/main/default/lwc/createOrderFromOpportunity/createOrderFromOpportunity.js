@@ -37,7 +37,7 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
     }
 
     get availableOpportunityProducts() {
-        return this.generateCheckboxGroup(this.opportunity.OpportunityLineItems);
+        return this.generateCheckboxGroup(this.opportunity?.OpportunityLineItems);
     }
 
     handleChange(e) {
@@ -80,7 +80,6 @@ export default class CreateOrderFromOpportunity extends NavigationMixin(Lightnin
 
 
     }
-
     generateCheckboxGroup(opportunityItems) {
         const options = [];
         if (opportunityItems) {
